@@ -1,0 +1,30 @@
+
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# split planes with | and -
+bind v split-window -h
+bind s split-window -v
+unbind '"'
+unbind %
+
+# mouse behavior
+setw -g mouse on
+
+set-option -g default-terminal screen-256color
+
+# Status Bar
+set-option -g status-interval 1
+set-option -g status-style bg=black
+set-option -g status-style fg=white
+set -g status-left '#[default]'
+set -g status-right '%a%l:%M %p#[default]'
+
+set -g pane-active-border-style bg=default,fg=green
+set -g pane-border-style fg=white
+
+# Set window notifications
+setw -g monitor-activity on
+set -g visual-activity on
