@@ -1,4 +1,3 @@
-lua << EOF
 local actions = require('telescope.actions')
 require('telescope').setup {
     defaults = {
@@ -35,6 +34,23 @@ M.search_dotfiles = function()
     })
 end
 
+            -- map(mode, key, lua function to call)
+            --
+            -- good place to look: telescope.actions (init.lua)
+            -- lua function to call:  (gets bufnr, not necessarily needed)
+            --   require('telescope.actions.state').get_selected_entry(bufnr)
+            --   Actions just take the bufnr and give out information
+            --   require('telescope.actions').close(bufnr)
+            --
+            --   check out telescope.actions for _all the available_ supported
+            --   actions.
+            --
+            --   :h telescope.setup ->
+            --   :h telescope.builtin ->
+            --   :h telescope.layout ->
+            --   :h telescope.actions
+            --
+
 M.git_branches = function()
     require("telescope.builtin").git_branches({
         attach_mappings = function(prompt_bufnr, map)
@@ -46,14 +62,3 @@ M.git_branches = function()
 end
 
 return M
-
-EOF
-
-
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
-
-nnoremap <leader>pw :lua require('telescope.builtin').grep_string { search = vim.fn.expand("<cword>") }<CR>
-nnoremap <leader>pb :lua require('telescope.builtin').buffers()<CR>
-nnoremap <leader>vh :lua require('telescope.builtin').help_tags()<CR>
