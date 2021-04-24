@@ -36,6 +36,11 @@ Plug 'vuciv/vim-bujo'
 
 " practice vim speed
 "Plug 'theprimeagen/vim-be-good'
+"
+"
+
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(69) } }
+
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'gruvbox-community/gruvbox'
