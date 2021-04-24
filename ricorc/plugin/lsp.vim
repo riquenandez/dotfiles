@@ -1,3 +1,4 @@
+
 set completeopt=menuone,noinsert,noselect
 
 nnoremap <leader>vd :lua vim.lsp.buf.definition()<CR>
@@ -11,6 +12,7 @@ nnoremap <leader>vsd :lua vim.lsp.diagnostic.show_line_diagnostics(); vim.lsp.di
 
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_enable_auto_paren = 1
+let g:lsp_virtual_text_enabled = 0
 
 imap  <c-j> <Plug>(completion_next_source)
 imap  <c-k> <Plug>(completion_prev_source)
@@ -22,3 +24,5 @@ lua require'lspconfig'.tsserver.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.vuels.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.pyls.setup{ on_attach=require'completion'.on_attach }
 lua require'lspconfig'.clangd.setup{ on_attach=require'completion'.on_attach }
+
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
