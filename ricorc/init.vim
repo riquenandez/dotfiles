@@ -25,6 +25,9 @@ Plug 'simrat39/symbols-outline.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 
+" Prettier
+Plug 'sbdchd/neoformat'
+
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -115,7 +118,13 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+augroup END
+
 augroup RICO
     autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
     autocmd BufWritePre * :call TrimWhitespace()
 augroup END
