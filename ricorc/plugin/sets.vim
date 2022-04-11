@@ -15,14 +15,17 @@ set undodir=~/.vim/undodir
 set undofile
 set incsearch
 set scrolloff=8
-set colorcolumn=80
 set signcolumn=yes
+set colorcolumn=80
 set termguicolors
 
 " personal preferences
-set cmdheight=2
+set cmdheight=1
+
 set clipboard=unnamedplus
+
 set mouse=a
-set updatetime=300
-set timeoutlen=500
-set background=dark
+
+set updatetime=50
+
+set shortmess+=c

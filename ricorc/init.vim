@@ -1,3 +1,13 @@
+set path+=**
+
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/.git/*
+
 call plug#begin('~/.vim/plugged')
 " telescope
 Plug 'nvim-lua/popup.nvim'
@@ -27,6 +37,11 @@ Plug 'rafamadriz/friendly-snippets'
 
 " Prettier
 Plug 'sbdchd/neoformat'
+
+" js, JSX, TSX highlight
+" Plug 'yuezk/vim-js'
+" Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'HerringtonDarkholme/yats.vim'
 
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -61,6 +76,10 @@ let mapleader = " "
 if executable('rg')
     let g:rg_derive_root='true'
 endif
+
+" let g:vim_jsx_pretty_colorful_config = 1 " default 0
+" let g:vim_jsx_pretty_template_tags = ['html', 'jsx', 'tsx']
+" let g:yats_host_keyword = 1
 
 imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'
 inoremap <silent> <S-Tab> <cmd>lua require'luasnip'.jump(-1)<Cr>
