@@ -68,6 +68,7 @@ call plug#end()
 lua require("rico")
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true }}
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme gruvbox
 highlight Normal guibg=none
 
