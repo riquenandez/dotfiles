@@ -28,7 +28,7 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'onsails/lspkind-nvim'
 
 " cmp ui
-Plug 'glepnir/lspsaga.nvim'
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 Plug 'simrat39/symbols-outline.nvim'
 
 " Snippets

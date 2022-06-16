@@ -4,6 +4,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Setup nvim-cmp.
 local cmp = require'cmp'
+local compare = require('cmp.config.compare')
 local source_mapping = {
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
@@ -25,12 +26,13 @@ cmp.setup({
           end,
         },
 
-        mapping = {
-        	    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-	    	    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-	    	    ["<C-Space>"] = cmp.mapping.complete(),
-                ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        },
+        mapping = cmp.mapping.preset.insert({
+            ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.`
+		    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+		    ["<C-Space>"] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+	    }),
 
         sources = {
 
@@ -60,8 +62,21 @@ cmp.setup({
 			    vim_item.menu = menu
 			    return vim_item
             end,
-        }
-
+        },
+         -- sorting = {
+         --    priority_weight = 2,
+         --    comparators = {
+         --      require('cmp_tabnine.compare'),
+         --      compare.offset,
+         --      compare.exact,
+         --      compare.score,
+         --      compare.recently_used,
+         --      compare.kind,
+         --      compare.sort_text,
+         --      compare.length,
+         --      compare.order,
+         --    },
+         --  },
 })
 
 local tabnine = require('cmp_tabnine.config')
