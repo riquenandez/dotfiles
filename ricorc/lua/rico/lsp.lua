@@ -141,3 +141,15 @@ local function config(_config)
 end
 
 require("lspconfig").tsserver.setup(config())
+
+require("lspconfig").gopls.setup(config({
+	cmd = { "gopls", "serve" },
+	settings = {
+		gopls = {
+			analyses = {
+				unusedparams = true,
+			},
+			staticcheck = true,
+		},
+	},
+}))
